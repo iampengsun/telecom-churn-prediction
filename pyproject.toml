@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "telecom-churn-prediction"
+version = "0.1.0"
+description = "Point-in-time telecom churn prediction and retention decision support"
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "numpy>=2.1,<2.4", "pandas>=2.2,<3", "scikit-learn>=1.6,<1.9",
+  "joblib>=1.4,<2", "fastapi>=0.115,<0.130", "uvicorn>=0.34,<1",
+  "pydantic>=2.10,<3", "typer>=0.15,<1", "anyio>=4.8,<4.12"
+]
+
+[project.optional-dependencies]
+lightgbm = ["lightgbm>=4.5,<5"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "pytest-cov>=6,<8", "httpx>=0.28,<1", "ruff>=0.11,<1"]
+
+[project.scripts]
+churn = "telecom_churn.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telecom_churn"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501", "B008"]

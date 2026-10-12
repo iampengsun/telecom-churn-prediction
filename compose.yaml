@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      CHURN_ENV: production
+      CHURN_MODEL_PATH: /app/artifacts
+      CHURN_API_KEY: ${CHURN_API_KEY:?CHURN_API_KEY is required}
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

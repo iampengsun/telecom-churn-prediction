@@ -1,0 +1,23 @@
+name: quality
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.9.18"
+      - run: uv sync --frozen --extra lightgbm
+      - run: uv run --frozen --extra lightgbm ruff check src tests
+      - run: uv run --frozen --extra lightgbm ruff format --check src tests
+      - run: uv run --frozen --extra lightgbm pytest --cov=telecom_churn --cov-report=xml
+      - run: uv build
