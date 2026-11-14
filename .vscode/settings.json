@@ -1,0 +1,11 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+  "files.watcherExclude": {
+    "**/data/**": true,
+    "**/artifacts/**": true,
+    "**/.uv-cache/**": true
+  }
+}

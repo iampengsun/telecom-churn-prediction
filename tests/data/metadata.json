@@ -1,0 +1,7 @@
+{
+  "source": "generated_fixture",
+  "seed": 42,
+  "customers": 160,
+  "data_start": "2024-10-01",
+  "data_end_exclusive": "2026-02-01"
+}

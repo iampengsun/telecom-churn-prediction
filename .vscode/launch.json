@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "客户流失 API",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "telecom_churn.cli",
+      "args": ["serve"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "固定小样本：构建特征",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "telecom_churn.cli",
+      "args": ["build-features", "--raw-dir", "tests/data", "--data-end", "2026-02-01", "--output", "data/practice/features.csv"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

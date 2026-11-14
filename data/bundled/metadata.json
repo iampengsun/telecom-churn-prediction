@@ -1,0 +1,418 @@
+{
+  "source": "generated_fixture",
+  "description": "固定的规则合成教学数据；不代表运营商真实客户或实际业务效果。",
+  "seed": 42,
+  "customers": 200000,
+  "data_start": "2024-10-01",
+  "data_end_exclusive": "2026-02-01",
+  "rows": {
+    "customers": 200000,
+    "usage": 79588503,
+    "invoices": 2655420,
+    "tickets": 469781,
+    "events": 90402
+  },
+  "files": {
+    "part-000/customers.csv.gz": {
+      "bytes": 93612,
+      "sha256": "16d3bad6d2d3a2401c14399323027ff49a2750b10ecced1873e7b3998b1ab502"
+    },
+    "part-000/tickets.csv.gz": {
+      "bytes": 145363,
+      "sha256": "ea88c2409df0e5072c19ad60cb59577132a99ce0553cdca72b9912686482e135"
+    },
+    "part-000/usage.csv.gz": {
+      "bytes": 38025470,
+      "sha256": "d379a7ff05dc33e4237a546b58db06cd36be3ef3cc48aef5e44208f1853c84aa"
+    },
+    "part-000/events.csv.gz": {
+      "bytes": 23934,
+      "sha256": "5cbbf6fa24c4674327c7fdcbff47f567380aec2cbdb2ad717bae3af7a2e2d2f2"
+    },
+    "part-000/invoices.csv.gz": {
+      "bytes": 1258619,
+      "sha256": "c39cf22367f457a2976a28c7469fdf00be865c9443d318e85ff4b5d4ba1ed95e"
+    },
+    "part-001/customers.csv.gz": {
+      "bytes": 93734,
+      "sha256": "d29d717a0b18c69d1a2cbc3de8cde2cf22f6d0da695ec8091adf192894fd33ef"
+    },
+    "part-001/tickets.csv.gz": {
+      "bytes": 146666,
+      "sha256": "9504c7b2b1cf0f5a01c505aa394f6e26fb3b0e22c996435eda58d1ede93b55d3"
+    },
+    "part-001/usage.csv.gz": {
+      "bytes": 37877440,
+      "sha256": "aa479a23184e1ced5be89161298dbe293c340a1f8d1c8b2633875e026b7ffb1b"
+    },
+    "part-001/events.csv.gz": {
+      "bytes": 24221,
+      "sha256": "9aab8eb5f148e4a6cacf9b0f17ba6fa2d1ea0716b8b3a395a86a66fba836b35b"
+    },
+    "part-001/invoices.csv.gz": {
+      "bytes": 1256153,
+      "sha256": "ee3ec7dacaab685c2c8a1b8cccf9000e543e507ba1f6031f6ced8ad69d7dfbd3"
+    },
+    "part-002/customers.csv.gz": {
+      "bytes": 93676,
+      "sha256": "e5804c33b54ff41192b9179eb085c0a237fbf3dbdc035338ba92ab6315739314"
+    },
+    "part-002/tickets.csv.gz": {
+      "bytes": 144096,
+      "sha256": "80fb0a6dda90358f2f6724c773c570ad2252d236bf40c7bb93b976acfa74a35e"
+    },
+    "part-002/usage.csv.gz": {
+      "bytes": 37820366,
+      "sha256": "af84f2bda053a1f069b6e631ef3a6b27a96fbce2093e3d469d499458e3b55bb0"
+    },
+    "part-002/events.csv.gz": {
+      "bytes": 24456,
+      "sha256": "4b39825b3eea50a67e878a0df48d17c87eb4e8956d0409129c1ef6f0911e76ef"
+    },
+    "part-002/invoices.csv.gz": {
+      "bytes": 1254311,
+      "sha256": "501ca7ac7534d7141f96e696d8ef42eadc251c1300f9e2ad7c7b06fa7753f335"
+    },
+    "part-003/customers.csv.gz": {
+      "bytes": 93751,
+      "sha256": "ad2ed7bc701ab887d4e770040796421e812ee1e1f65ec37bcb17594b23754b11"
+    },
+    "part-003/tickets.csv.gz": {
+      "bytes": 146233,
+      "sha256": "906dac9af3f78554e5d648a6d86fe670b89659fb04814f0704b89ed4a9576b2a"
+    },
+    "part-003/usage.csv.gz": {
+      "bytes": 37761521,
+      "sha256": "fb045fa8e4b27ab37f86d583b98266ed24cf8cc80cbc2146ad811f60bf0b342f"
+    },
+    "part-003/events.csv.gz": {
+      "bytes": 24024,
+      "sha256": "0f0f0894d8af7e3b960b20a01e7750403cfc896ee54cd4bdd83ede369579ed3e"
+    },
+    "part-003/invoices.csv.gz": {
+      "bytes": 1252012,
+      "sha256": "ba52032308ce133f56ddd2dfa66f93a543ac807397d9bf9e9fe20eee76e4ec18"
+    },
+    "part-004/customers.csv.gz": {
+      "bytes": 93799,
+      "sha256": "481bfaf38480f6b60ad7bd4423237c07ed2b10bdff169708efd9bbd82593b0a4"
+    },
+    "part-004/tickets.csv.gz": {
+      "bytes": 144737,
+      "sha256": "b088d863474ca30fd068521e6ab027717ec02a5065ee07e0d78acff26ed2c8c2"
+    },
+    "part-004/usage.csv.gz": {
+      "bytes": 37966900,
+      "sha256": "8dd29706e35e65bc9fa0dcb503bfb298ba6d379b86f077d243231b01e4f9c7b1"
+    },
+    "part-004/events.csv.gz": {
+      "bytes": 24331,
+      "sha256": "231f9e62f38c3e8df3e1221d822bc662dacb77d3346f5e1a2aa8f5b9b5d9ec18"
+    },
+    "part-004/invoices.csv.gz": {
+      "bytes": 1258621,
+      "sha256": "d75640d9bcbea482aee1f2ebb481ab9018cfc4ff88e4c5168e9e8f873da2b203"
+    },
+    "part-005/customers.csv.gz": {
+      "bytes": 93768,
+      "sha256": "1fd1353a9650d574d34f5d85bd724fc4facb08f57e4fe02883d06ae6aa8e9f1c"
+    },
+    "part-005/tickets.csv.gz": {
+      "bytes": 144533,
+      "sha256": "645ae3cf3ea31be9e17553f336ba722d3935aa87fb3771602610906fc99bb3b4"
+    },
+    "part-005/usage.csv.gz": {
+      "bytes": 37930352,
+      "sha256": "7efdd280008dba4aa288cbda8332f13b6f22529097dd2fcde57e6c6c3a0fff34"
+    },
+    "part-005/events.csv.gz": {
+      "bytes": 23869,
+      "sha256": "5c2a58d3e3a4a11b3408e2fad5910628ed15eb2cbd3e9551b5b0b3409ecd19c8"
+    },
+    "part-005/invoices.csv.gz": {
+      "bytes": 1256593,
+      "sha256": "0f224c3544218ac4bba625014e8570c62b1f13efee87403b599be4a544c70eb6"
+    },
+    "part-006/customers.csv.gz": {
+      "bytes": 93784,
+      "sha256": "1e3f1c806510cc57dff042b57228f2987e0079cf46b360f8ad3b204f1d5b3cf9"
+    },
+    "part-006/tickets.csv.gz": {
+      "bytes": 146537,
+      "sha256": "6f14e6e1e74f3a9a714a70e5aed1fd783aafe7b0a925203d1d396b7b1b78dc77"
+    },
+    "part-006/usage.csv.gz": {
+      "bytes": 37781301,
+      "sha256": "bda2752c030b7027e8e6cb894718b25143f2a02149c3ae73be317f4ed44a19c5"
+    },
+    "part-006/events.csv.gz": {
+      "bytes": 24504,
+      "sha256": "74fcfe0ab2a30d5d91151086423aed6bd63ca56fd0cc1d458692e8bb5a92718b"
+    },
+    "part-006/invoices.csv.gz": {
+      "bytes": 1253474,
+      "sha256": "6c73e3aae16ddfc26d4838f1f02870be564c5bb7d8abeb7e8236d2cdb6c913ea"
+    },
+    "part-007/customers.csv.gz": {
+      "bytes": 93671,
+      "sha256": "b218ffd0f178a55cfb16db009c06e3d29af7e4774509fb0aedeacf5f0e32140c"
+    },
+    "part-007/tickets.csv.gz": {
+      "bytes": 146575,
+      "sha256": "e39cfc6dd7ec981a0036fd8801f61597b3aae9ee76803961de64ac57bb972f4d"
+    },
+    "part-007/usage.csv.gz": {
+      "bytes": 37867258,
+      "sha256": "17f225749617437582be75852ffe6fe91b4bcc542e233197abb1b2d133e189c3"
+    },
+    "part-007/events.csv.gz": {
+      "bytes": 24104,
+      "sha256": "4a2a42885163d34278a905bf171cc79c2b9a7f627dfac8d03d41438d0bb6fc03"
+    },
+    "part-007/invoices.csv.gz": {
+      "bytes": 1254012,
+      "sha256": "1ffeb445d0bbd5c0984385ccf331aa19fddd7a91285cdf027040014c827ebcee"
+    },
+    "part-008/customers.csv.gz": {
+      "bytes": 93659,
+      "sha256": "448ae43071d5b9f78a59f6641ac5ed84f09736bc80574ff15c9eb2ef490ed86e"
+    },
+    "part-008/tickets.csv.gz": {
+      "bytes": 146129,
+      "sha256": "ab2d5c28b88e3c85a9899d2ef926f85c7abe7f713991edbbe87c9ad30f3940c4"
+    },
+    "part-008/usage.csv.gz": {
+      "bytes": 37765056,
+      "sha256": "eeb03786b304735ddea0b300461a6cbc4a99f3c3b6df23d2fb69da5d78b278e4"
+    },
+    "part-008/events.csv.gz": {
+      "bytes": 24371,
+      "sha256": "0f6504d2d0c02369816d76a70adc6f55e7944572ec7da5d23f1908f9e60fcf47"
+    },
+    "part-008/invoices.csv.gz": {
+      "bytes": 1251393,
+      "sha256": "a3f1686a955921528e14aa8768c1ab69e66229f96acafc566d8b1cf62d35b03e"
+    },
+    "part-009/customers.csv.gz": {
+      "bytes": 93793,
+      "sha256": "92a548fb5eabcd300a7c059cff024c0ab3bfc9c5f07b1e88f650610965a6698f"
+    },
+    "part-009/tickets.csv.gz": {
+      "bytes": 146404,
+      "sha256": "5b8a01e13a77ce359e88b4015bd98fd59c8d2175b7ab498b0d7d4ef88bad5067"
+    },
+    "part-009/usage.csv.gz": {
+      "bytes": 38063977,
+      "sha256": "3b78da4f7f20d9afba3f5d6d1825f1d98a99f4a8c0d19abb43468bcf54b808f4"
+    },
+    "part-009/events.csv.gz": {
+      "bytes": 24064,
+      "sha256": "6dadfae0ade66de1267b6cc62df379b85fef543c0abe183e688e23a557b01039"
+    },
+    "part-009/invoices.csv.gz": {
+      "bytes": 1260937,
+      "sha256": "d56d741095c6198f8ba0659d90a86a2b48193e145eddf3ec066739de325d89bc"
+    },
+    "part-010/customers.csv.gz": {
+      "bytes": 93681,
+      "sha256": "0a579a8525f21acdacc3b7f888fd436bea7fff00a7070c158e0d52af8fc79968"
+    },
+    "part-010/tickets.csv.gz": {
+      "bytes": 145146,
+      "sha256": "5cbbf7ce73bb515630abf0aab4a5cb5c5fddd6a9d9bdf8460cd42df730f418ac"
+    },
+    "part-010/usage.csv.gz": {
+      "bytes": 37908794,
+      "sha256": "4a37424137ded96d9aaee92a0605c30f3b55b965468b070d22fb722817b76ebf"
+    },
+    "part-010/events.csv.gz": {
+      "bytes": 24126,
+      "sha256": "33372a4cde5d85a094d84404761f3d6aac6c826696d78f915d7d94e903b81ab9"
+    },
+    "part-010/invoices.csv.gz": {
+      "bytes": 1256525,
+      "sha256": "ec969e3681ba01e1809ab3d72665d90e5d6725597d432521dc2340eef3691a11"
+    },
+    "part-011/customers.csv.gz": {
+      "bytes": 93648,
+      "sha256": "6ca1b4bcb1d0b7d0b7326b98061cdd03ccc0049ece5a513530891452d44f257a"
+    },
+    "part-011/tickets.csv.gz": {
+      "bytes": 144558,
+      "sha256": "b67e34774408d19030f6ee827924caef582844e70cd0f500c461a97d686ea6aa"
+    },
+    "part-011/usage.csv.gz": {
+      "bytes": 37913761,
+      "sha256": "b9eeaee7d46865d218eceda52766d1a814337c9b10a43e267600d54904ff590e"
+    },
+    "part-011/events.csv.gz": {
+      "bytes": 24007,
+      "sha256": "8d7cc878df3892440b79ffe9c4db70947d960dd965e716484db6ad98557bba11"
+    },
+    "part-011/invoices.csv.gz": {
+      "bytes": 1257444,
+      "sha256": "3cd5df81174edfe6b9cd73f020cb2a919342d6450015747641b32e3f1281b5bb"
+    },
+    "part-012/customers.csv.gz": {
+      "bytes": 93667,
+      "sha256": "a00c8e510bb8b26e3aad837ef3c7e1200d0472b8e28da3f3bcef951b76ce6581"
+    },
+    "part-012/tickets.csv.gz": {
+      "bytes": 144551,
+      "sha256": "35ee5ee52d22b6fdc14d9b9f75bd2dfabe51cfee8df9a66aaaab90ae47a1c87b"
+    },
+    "part-012/usage.csv.gz": {
+      "bytes": 37911320,
+      "sha256": "e902d717031391b57c6a4219c56f765da6acde0a4039afa3842d57608a127e35"
+    },
+    "part-012/events.csv.gz": {
+      "bytes": 24007,
+      "sha256": "bed9314829c3a7ad50aca26ce80284d02027c8e8d3403ad5ccb7d07b63c56c5c"
+    },
+    "part-012/invoices.csv.gz": {
+      "bytes": 1256283,
+      "sha256": "ec8fd2985288bf740bd474de85a6d4f0a05c83a005f65f6becf656b28d47baf4"
+    },
+    "part-013/customers.csv.gz": {
+      "bytes": 93743,
+      "sha256": "2ca25e70ee445e20cee76dc6d2860df9dc751c31538527136d53ded69ec25f3f"
+    },
+    "part-013/tickets.csv.gz": {
+      "bytes": 145631,
+      "sha256": "70f05048d21a5e482fe94d27dba5b2e43a22cb72d8c3a8f3503ee903558ae558"
+    },
+    "part-013/usage.csv.gz": {
+      "bytes": 37798426,
+      "sha256": "4825ae1c1813760cec00f31b3175fc78c312d2b520e03a87a513ffe49c99a155"
+    },
+    "part-013/events.csv.gz": {
+      "bytes": 24123,
+      "sha256": "eef2804deb50c61520223098081beee40b20c6361e2e2a4558b41b06c0d466ad"
+    },
+    "part-013/invoices.csv.gz": {
+      "bytes": 1252645,
+      "sha256": "3d6f9d390604658e6662b8e7810110f1ecabc458e90ca03d3423f327fdd98800"
+    },
+    "part-014/customers.csv.gz": {
+      "bytes": 93790,
+      "sha256": "a588584daf58e17d1326a6bcd120dfa15a6493a4290afbf7ef04d108b137607e"
+    },
+    "part-014/tickets.csv.gz": {
+      "bytes": 146085,
+      "sha256": "5b961fe69fd766ac47244b81bbddb3fb35e114f0b57bef1874dffeb2e00b3e1f"
+    },
+    "part-014/usage.csv.gz": {
+      "bytes": 37887809,
+      "sha256": "d9d63a41690b6c1387aba21107f1b96a70e0537b9b56319bd9a3bd7f7ce01045"
+    },
+    "part-014/events.csv.gz": {
+      "bytes": 23799,
+      "sha256": "77d254bb11ddbb189794ce8fca1ccb462e0a9bb3b2134d316ff67a0a5ec41572"
+    },
+    "part-014/invoices.csv.gz": {
+      "bytes": 1255565,
+      "sha256": "7e14279633e10d297f14c9c95b80604d437cf80ba844ae26a28db0ded26542ec"
+    },
+    "part-015/customers.csv.gz": {
+      "bytes": 93693,
+      "sha256": "900f63d6590159b4235fd06a5a7bf1afeeca62f4499f754989f7caab676701fb"
+    },
+    "part-015/tickets.csv.gz": {
+      "bytes": 146313,
+      "sha256": "f32677a7ea6b7c50f439d13cdc0a22e4e20d5393a5947bcde81dfc04b64b26af"
+    },
+    "part-015/usage.csv.gz": {
+      "bytes": 37781588,
+      "sha256": "e0be85e081cbcd8b7242d8a99a20842815bf49b68e103dc984b7fcc683ac91eb"
+    },
+    "part-015/events.csv.gz": {
+      "bytes": 24234,
+      "sha256": "088f3f5b3b7998fdda85725aa6721875c528a38c5f7fa365bd1c71eeb04a5a5a"
+    },
+    "part-015/invoices.csv.gz": {
+      "bytes": 1252870,
+      "sha256": "23866dcd41f9e9d000886e53ef33c5f90f5ff53f0d74aa1d91eb9bcc1d8936cd"
+    },
+    "part-016/customers.csv.gz": {
+      "bytes": 93731,
+      "sha256": "4f2d870661884e3d6064b5dc30fde51c07341f6b4834dc003746342669a48cf4"
+    },
+    "part-016/tickets.csv.gz": {
+      "bytes": 144986,
+      "sha256": "72a1d03a97a6ec979aff536105cceea6276b63e1051f35cb0278ed63ebb9474e"
+    },
+    "part-016/usage.csv.gz": {
+      "bytes": 38022838,
+      "sha256": "1ad4a9935c7652e56dc944798dd8bf0b47d5b239c3b1e934d8ffef9b468aa749"
+    },
+    "part-016/events.csv.gz": {
+      "bytes": 24047,
+      "sha256": "eddb8759ef38b6103fae29862b6b18018de0b927add75a665198c517c8cf7a4f"
+    },
+    "part-016/invoices.csv.gz": {
+      "bytes": 1259952,
+      "sha256": "87711980ee30480b3b51eb08f377335d26a3c5861d4a0a12692fe93ab15896e5"
+    },
+    "part-017/customers.csv.gz": {
+      "bytes": 93706,
+      "sha256": "15f971cc35a2b7109ad230fc43bc015b0750c06e55b2ae139978698f2757d66f"
+    },
+    "part-017/tickets.csv.gz": {
+      "bytes": 146871,
+      "sha256": "89acc52ae359cc1266c4bbecb45fe1ae8a80e46fd3f0acafc77c56005b073729"
+    },
+    "part-017/usage.csv.gz": {
+      "bytes": 38033229,
+      "sha256": "6ea2a04c02cc9e42c11ebb126306b1caaecc1f76288beae0701d7cfd0996f2e0"
+    },
+    "part-017/events.csv.gz": {
+      "bytes": 24024,
+      "sha256": "a0039117302cfff71287f781092ee27de12ae2d98b9d7d2a26dd232f883dbbac"
+    },
+    "part-017/invoices.csv.gz": {
+      "bytes": 1259751,
+      "sha256": "4d40360903d7c04bbe74a8d054bcc24738c9fdf968b8dbf4070b77bcf60ebb77"
+    },
+    "part-018/customers.csv.gz": {
+      "bytes": 93711,
+      "sha256": "46465bf4cfa1168825bbf95cb32f885a892bcdd52af508d7ef3d627c4d3032ad"
+    },
+    "part-018/tickets.csv.gz": {
+      "bytes": 142886,
+      "sha256": "00d2c8b0559dadcd55f86ed4aaa2c1b3534c6de6238ed83d42fca835fff07895"
+    },
+    "part-018/usage.csv.gz": {
+      "bytes": 37897546,
+      "sha256": "c2fb47ead8dd589662791b3a2e2a5cb5b8c8b5e682a5da21c391e313bc6f32b3"
+    },
+    "part-018/events.csv.gz": {
+      "bytes": 23981,
+      "sha256": "f4f6e6bd440962f53f94031a23ab478832fca777f3576fadc8044d34321252ea"
+    },
+    "part-018/invoices.csv.gz": {
+      "bytes": 1256266,
+      "sha256": "b5a6bca57db09c209aa91a0e374ff53989f39591c239a8712cce973d34d9af93"
+    },
+    "part-019/customers.csv.gz": {
+      "bytes": 93639,
+      "sha256": "9281d53bf2fe9e10b5b24a990cbf56e2f94fa586b049a3d3beca8fb5a0f06704"
+    },
+    "part-019/tickets.csv.gz": {
+      "bytes": 145085,
+      "sha256": "01d9411c4f15b9535f3034ce1fce227e85163c690907537cd1a910ef60abcbc2"
+    },
+    "part-019/usage.csv.gz": {
+      "bytes": 37666525,
+      "sha256": "ea9aeb00e5f65820e042df916c4130ad8ad0aa6f93caf05e044d52786ccab28d"
+    },
+    "part-019/events.csv.gz": {
+      "bytes": 24420,
+      "sha256": "0d8221d3ad9f3add786e600d21c508384ef9db6a678d58371cabe0cb7332e5de"
+    },
+    "part-019/invoices.csv.gz": {
+      "bytes": 1249280,
+      "sha256": "ece99c348b19d66d8d0286579ef3e7c87a95ac62c3bc8da270f24b9794607190"
+    }
+  },
+  "partitioning": "20 customer partitions, 10000 customers per partition; all tables use the same customer partition"
+}

@@ -1,0 +1,368 @@
+/* 页面主题、布局与响应式样式；选择器对应 index.html 的类名和 ID。 */
+:root {
+  --ink:#183331; /* 主题颜色变量 */
+  --muted:#71817c; /* 主题颜色变量 */
+  --green:#136c56; /* 主题颜色变量 */
+  --line:#dfe8e2; /* 主题颜色变量 */
+  --paper:#f5f7f3; /* 主题颜色变量 */
+}
+* {
+  box-sizing:border-box; /* 宽高是否包含内边距和边框 */
+}
+body {
+  margin:0; /* 外边距 */
+  background:var(--paper); /* 背景填充 */
+  color:var(--ink); /* 文字颜色 */
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; /* 字体及回退顺序 */
+  font-size:14px; /* 文字大小 */
+}
+.shell {
+  display:flex; /* 布局方式 */
+  min-height:100vh; /* 最小高度 */
+}
+aside {
+  width:220px; /* 元素宽度 */
+  flex-shrink:0; /* 空间不足时的收缩比例 */
+  background:#123b32; /* 背景填充 */
+  color:#effaf3; /* 文字颜色 */
+  padding:36px 22px; /* 内边距 */
+  position:relative; /* 定位方式 */
+}
+.brand {
+  font-weight:700; /* 字重 */
+  letter-spacing:2px; /* 字间距 */
+}
+.brand small {
+  display:block; /* 布局方式 */
+  margin:7px 0 0 42px; /* 外边距 */
+  font-size:9px; /* 文字大小 */
+  letter-spacing:3px; /* 字间距 */
+  color:#b6d0c4; /* 文字颜色 */
+}
+.logo {
+  display:inline-grid; /* 布局方式 */
+  place-items:center; /* 网格内容对齐 */
+  width:30px; /* 元素宽度 */
+  height:30px; /* 元素高度 */
+  background:#c4e9b4; /* 背景填充 */
+  color:#123b32; /* 文字颜色 */
+  border-radius:8px; /* 圆角半径 */
+  margin-right:6px; /* 该方向的间距或边框设置 */
+}
+.nav {
+  margin-top:60px; /* 该方向的间距或边框设置 */
+  padding:15px 10px; /* 内边距 */
+  background:#285046; /* 背景填充 */
+  border-radius:6px; /* 圆角半径 */
+}
+.side-bottom {
+  position:absolute; /* 定位方式 */
+  bottom:40px; /* 底部偏移 */
+  font-size:10px; /* 文字大小 */
+  line-height:2.4; /* 行高 */
+  letter-spacing:1px; /* 字间距 */
+  color:#8fafa2; /* 文字颜色 */
+}
+main {
+  max-width:1500px; /* 最大宽度 */
+  flex:1; /* 弹性伸缩比例 */
+  padding:42px 44px; /* 内边距 */
+  min-width:0; /* 最小宽度 */
+}
+header {
+  display:flex; /* 布局方式 */
+  justify-content:space-between; /* 主轴对齐 */
+  align-items:center; /* 交叉轴对齐 */
+}
+.eyebrow {
+  letter-spacing:2px; /* 字间距 */
+  font-size:11px; /* 文字大小 */
+  font-weight:700; /* 字重 */
+  color:var(--green); /* 文字颜色 */
+}
+h1 {
+  font-size:30px; /* 文字大小 */
+  letter-spacing:-1px; /* 字间距 */
+  margin:10px 0; /* 外边距 */
+}
+header p,.hint {
+  color:var(--muted); /* 文字颜色 */
+  line-height:1.7; /* 行高 */
+}
+.badge {
+  padding:8px 13px; /* 内边距 */
+  border:1px solid #c8dacb; /* 边框 */
+  background:#eaf3e8; /* 背景填充 */
+  border-radius:24px; /* 圆角半径 */
+  font-size:12px; /* 文字大小 */
+}
+.connection {
+  display:flex; /* 布局方式 */
+  gap:12px; /* 子元素间距 */
+  align-items:center; /* 交叉轴对齐 */
+  margin:26px 0; /* 外边距 */
+  color:var(--muted); /* 文字颜色 */
+  font-size:11px; /* 文字大小 */
+  flex-wrap:wrap; /* 该方向的间距或边框设置 */
+}
+.connection input {
+  border:1px solid var(--line); /* 边框 */
+  padding:9px 12px; /* 内边距 */
+  border-radius:5px; /* 圆角半径 */
+  background:white; /* 背景填充 */
+  max-width:200px; /* 最大宽度 */
+}
+.connection label {
+  font-weight:700; /* 字重 */
+  letter-spacing:1px; /* 字间距 */
+}
+#version {
+  margin-left:auto; /* 该方向的间距或边框设置 */
+}
+.metrics {
+  display:grid; /* 布局方式 */
+  grid-template-columns:repeat(4,1fr); /* 网格列宽 */
+  gap:16px; /* 子元素间距 */
+  margin-bottom:28px; /* 该方向的间距或边框设置 */
+}
+.metrics article {
+  background:white; /* 背景填充 */
+  border:1px solid var(--line); /* 边框 */
+  border-radius:9px; /* 圆角半径 */
+  padding:22px; /* 内边距 */
+}
+.metrics label,.metrics small {
+  display:block; /* 布局方式 */
+  color:var(--muted); /* 文字颜色 */
+  font-size:12px; /* 文字大小 */
+}
+.metrics strong {
+  display:block; /* 布局方式 */
+  font-weight:600; /* 字重 */
+  font-size:29px; /* 文字大小 */
+  letter-spacing:-1px; /* 字间距 */
+  margin:17px 0 10px; /* 外边距 */
+  overflow-wrap:anywhere; /* 长文本换行方式 */
+}
+.metrics strong#algorithm {
+  font-size:20px; /* 文字大小 */
+  min-height:35px; /* 最小高度 */
+  padding-top:6px; /* 该方向的间距或边框设置 */
+}
+.workspace {
+  display:grid; /* 布局方式 */
+  grid-template-columns:1.2fr 1fr; /* 网格列宽 */
+  gap:22px; /* 子元素间距 */
+}
+.panel {
+  border:1px solid var(--line); /* 边框 */
+  border-radius:9px; /* 圆角半径 */
+  background:#fff; /* 背景填充 */
+  padding:25px; /* 内边距 */
+}
+.panel-title {
+  display:flex; /* 布局方式 */
+  align-items:center; /* 交叉轴对齐 */
+  justify-content:space-between; /* 主轴对齐 */
+  gap:12px; /* 子元素间距 */
+}
+.panel-title h2 {
+  font-size:16px; /* 文字大小 */
+  margin:0; /* 外边距 */
+}
+.panel-title>span {
+  font-size:10px; /* 文字大小 */
+  letter-spacing:1px; /* 字间距 */
+  color:#93a199; /* 文字颜色 */
+}
+.hint {
+  font-size:12px; /* 文字大小 */
+}
+.upload {
+  border:1px dashed #c5d6ca; /* 边框 */
+  padding:13px; /* 内边距 */
+  display:block; /* 布局方式 */
+  border-radius:5px; /* 圆角半径 */
+  color:var(--green); /* 文字颜色 */
+  font-size:12px; /* 文字大小 */
+  cursor:pointer; /* 鼠标指针样式 */
+}
+.upload input {
+  display:block; /* 布局方式 */
+  margin-top:10px; /* 该方向的间距或边框设置 */
+  font-size:11px; /* 文字大小 */
+  max-width:100%; /* 最大宽度 */
+}
+textarea {
+  width:100%; /* 元素宽度 */
+  height:180px; /* 元素高度 */
+  margin:14px 0; /* 外边距 */
+  border:1px solid var(--line); /* 边框 */
+  border-radius:5px; /* 圆角半径 */
+  background:#f8faf7; /* 背景填充 */
+  padding:12px; /* 内边距 */
+  color:var(--ink); /* 文字颜色 */
+  resize:vertical; /* 用户可调整尺寸方向 */
+  font-family:monospace; /* 字体及回退顺序 */
+  font-size:12px; /* 文字大小 */
+}
+button {
+  border:0; /* 边框 */
+  background:var(--green); /* 背景填充 */
+  color:white; /* 文字颜色 */
+  padding:11px 18px; /* 内边距 */
+  border-radius:5px; /* 圆角半径 */
+  cursor:pointer; /* 鼠标指针样式 */
+  font:inherit; /* 字体组合属性 */
+  font-size:12px; /* 文字大小 */
+}
+button:disabled {
+  opacity:.5; /* 透明度 */
+  cursor:default; /* 鼠标指针样式 */
+}
+button.secondary {
+  background:#fff; /* 背景填充 */
+  border:1px solid var(--line); /* 边框 */
+  color:var(--ink); /* 文字颜色 */
+  padding:8px 13px; /* 内边距 */
+}
+#predict {
+  width:100%; /* 元素宽度 */
+  display:flex; /* 布局方式 */
+  justify-content:space-between; /* 主轴对齐 */
+}
+.importance {
+  margin-top:26px; /* 该方向的间距或边框设置 */
+}
+.bar-row {
+  margin-bottom:19px; /* 该方向的间距或边框设置 */
+}
+.bar-label {
+  display:flex; /* 布局方式 */
+  justify-content:space-between; /* 主轴对齐 */
+  font-size:11px; /* 文字大小 */
+  margin-bottom:7px; /* 该方向的间距或边框设置 */
+}
+.bar-track {
+  height:6px; /* 元素高度 */
+  background:#edf2eb; /* 背景填充 */
+  border-radius:3px; /* 圆角半径 */
+  overflow:hidden; /* 溢出处理 */
+}
+.bar-fill {
+  height:100%; /* 元素高度 */
+  background:#7aa98b; /* 背景填充 */
+}
+.results {
+  margin-top:23px; /* 该方向的间距或边框设置 */
+}
+.table-wrap {
+  overflow-x:auto; /* 水平方向溢出处理 */
+}
+table {
+  border-collapse:collapse; /* 表格边框合并规则 */
+  width:100%; /* 元素宽度 */
+  margin-top:20px; /* 该方向的间距或边框设置 */
+  text-align:left; /* 文本对齐 */
+  white-space:nowrap; /* 空白与换行规则 */
+}
+th {
+  color:var(--muted); /* 文字颜色 */
+  font-size:11px; /* 文字大小 */
+  font-weight:500; /* 字重 */
+  padding:12px; /* 内边距 */
+  background:#f5f8f3; /* 背景填充 */
+}
+td {
+  font-size:12px; /* 文字大小 */
+  padding:16px 12px; /* 内边距 */
+  border-bottom:1px solid #edf1e9; /* 该方向的间距或边框设置 */
+}
+td.signals {
+  max-width:280px; /* 最大宽度 */
+  white-space:normal; /* 空白与换行规则 */
+  line-height:1.8; /* 行高 */
+}
+.risk {
+  padding:4px 9px; /* 内边距 */
+  border-radius:4px; /* 圆角半径 */
+  font-size:11px; /* 文字大小 */
+}
+.high {
+  background:#fff0e7; /* 背景填充 */
+  color:#a1572b; /* 文字颜色 */
+}
+.medium {
+  background:#fff7dd; /* 背景填充 */
+  color:#8c762d; /* 文字颜色 */
+}
+.low {
+  background:#eaf3e8; /* 背景填充 */
+  color:#487251; /* 文字颜色 */
+}
+.empty {
+  text-align:center; /* 文本对齐 */
+  color:#96a29b; /* 文字颜色 */
+  padding:44px 10px; /* 内边距 */
+  font-size:12px; /* 文字大小 */
+}
+#message {
+  margin-top:12px; /* 该方向的间距或边框设置 */
+  font-size:12px; /* 文字大小 */
+  color:#a1572b; /* 文字颜色 */
+  white-space:pre-wrap; /* 空白与换行规则 */
+}
+footer {
+  text-align:right; /* 文本对齐 */
+  color:#8c9991; /* 文字颜色 */
+  font-size:10px; /* 文字大小 */
+  margin-top:22px; /* 该方向的间距或边框设置 */
+}
+#count {
+  color:#7d9385; /* 文字颜色 */
+  font-size:12px; /* 文字大小 */
+  margin-left:8px; /* 该方向的间距或边框设置 */
+}
+@media(max-width:1100px) {
+  aside {
+    width:170px; /* 元素宽度 */
+  }
+  main {
+    padding:28px; /* 内边距 */
+  }
+  .metrics {
+    grid-template-columns:repeat(2,1fr); /* 网格列宽 */
+  }
+  .workspace {
+    grid-template-columns:1fr; /* 网格列宽 */
+  }
+}
+@media(max-width:650px) {
+  aside {
+    display:none; /* 布局方式 */
+  }
+  main {
+    padding:20px 14px; /* 内边距 */
+  }
+  h1 {
+    font-size:24px; /* 文字大小 */
+  }
+  .metrics {
+    gap:10px; /* 子元素间距 */
+  }
+  .metrics article {
+    padding:15px; /* 内边距 */
+  }
+  .panel {
+    padding:18px; /* 内边距 */
+  }
+  #version {
+    margin-left:0; /* 该方向的间距或边框设置 */
+  }
+  header {
+    gap:10px; /* 子元素间距 */
+  }
+  .badge {
+    white-space:nowrap; /* 空白与换行规则 */
+  }
+}

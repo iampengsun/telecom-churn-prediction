@@ -1,0 +1,25 @@
+name: quality
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.9.18"
+      - name: Install dependencies
+        run: uv sync --frozen --extra lightgbm
+      - name: Lint
+        run: uv run --frozen --extra lightgbm ruff check src tests
+      - name: Check formatting
+        run: uv run --frozen --extra lightgbm ruff format --check src tests
+      - name: Unit and integration tests
+        run: uv run --frozen --extra lightgbm pytest --cov=telecom_churn --cov-report=xml
+      - name: Build distributions
+        run: uv build
