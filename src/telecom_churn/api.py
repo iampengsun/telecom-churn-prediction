@@ -1,43 +1,18 @@
-# 导入 logging，供本模块后续逻辑使用。
 import logging
-
-# 导入 os，供本模块后续逻辑使用。
 import os
-
-# 导入 secrets，供本模块后续逻辑使用。
 import secrets
-
-# 导入 time，供本模块后续逻辑使用。
 import time
-
-# 导入 asynccontextmanager，供本模块后续逻辑使用。
 from contextlib import asynccontextmanager
-
-# 导入 Path，供本模块后续逻辑使用。
 from pathlib import Path
-
-# 导入 uuid4，供本模块后续逻辑使用。
 from uuid import uuid4
 
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
-
-# 导入 Depends, FastAPI, Header, HTTPException, Request，供本模块后续逻辑使用。
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
-
-# 导入 FileResponse，供本模块后续逻辑使用。
 from fastapi.responses import FileResponse
-
-# 导入 StaticFiles，供本模块后续逻辑使用。
 from fastapi.staticfiles import StaticFiles
 
-# 导入 load_model，供本模块后续逻辑使用。
 from telecom_churn.modeling import load_model
-
-# 导入 Prediction, PredictRequest，供本模块后续逻辑使用。
 from telecom_churn.schema import Prediction, PredictRequest
-
-# 导入 score_customers，供本模块后续逻辑使用。
 from telecom_churn.scoring import score_customers
 
 # 获取本模块的日志记录器，使用服务统一的日志配置。

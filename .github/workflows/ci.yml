@@ -1,25 +1,25 @@
-name: quality
-on:
-  push:
-  pull_request:
-jobs:
-  test:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.14"
-      - uses: astral-sh/setup-uv@v7
-        with:
-          version: "0.9.18"
-      - name: Install dependencies
-        run: uv sync --frozen --extra lightgbm
-      - name: Lint
-        run: uv run --frozen --extra lightgbm ruff check src tests
-      - name: Check formatting
-        run: uv run --frozen --extra lightgbm ruff format --check src tests
-      - name: Unit and integration tests
-        run: uv run --frozen --extra lightgbm pytest --cov=telecom_churn --cov-report=xml
-      - name: Build distributions
-        run: uv build
+name: quality # 工作流名称，在 GitHub 的 Actions 页面中显示为 quality。
+on: # 声明哪些 GitHub 事件会触发这套自动检查。
+  push: # 向仓库推送提交或标签时触发；未限定分支。
+  pull_request: # PR（请求合并分支修改）创建、更新等默认事件发生时触发。
+jobs: # 定义工作流中的作业；每个作业是一组在指定环境执行的步骤。
+  test: # 当前作业的标识，名称为 test，负责安装、检查、测试和构建。
+    runs-on: ubuntu-24.04 # 使用 GitHub 提供的 Ubuntu 24.04 Linux 执行机器（runner）。
+    steps: # 列出同一作业依次执行的步骤；普通步骤失败后，后续普通步骤会跳过。
+      - uses: actions/checkout@v5 # 调用检出代码的 Action，将当前运行对应的仓库代码放入工作目录；v5 是其版本。
+      - uses: actions/setup-python@v6 # 调用准备 Python 解释器的 Action；v6 是 Action 版本。
+        with: # 为上面的 setup-python Action 提供输入参数。
+          python-version: "3.14" # 使用 Python 3.14 系列，与项目声明的解释器版本范围一致。
+      - uses: astral-sh/setup-uv@v7 # 调用安装 uv 的 Action；uv 用来管理项目环境、依赖和构建。
+        with: # 为上面的 setup-uv Action 提供输入参数。
+          version: "0.9.18" # 固定 uv 自身的版本，减少开发环境与 CI 使用不同工具版本的差异。
+      - name: Install dependencies # 步骤显示名称：安装项目及所需的软件包。
+        run: uv sync --frozen # 使用现有 uv.lock 同步环境，不更新锁文件；安装项目运行依赖，默认也安装 dev 组。
+      - name: Lint # 步骤显示名称：静态检查，即读取源码检查规则而不运行训练业务。
+        run: uv run --frozen ruff check src tests # 在项目环境中检查源码和测试的 Ruff 规则；发现违规时返回非零退出码，不自动修复。
+      - name: Check formatting # 步骤显示名称：检查代码排版是否符合统一格式。
+        run: uv run --frozen ruff format --check src tests # 只检查格式，不改文件；需要重新格式化时此步骤失败。
+      - name: Unit and integration tests # 步骤显示名称：验证局部逻辑以及多个组件之间的衔接。
+        run: uv run --frozen pytest --cov=telecom_churn --cov-report=xml # 执行测试并统计项目包的覆盖率，生成 coverage.xml；失败会阻止后续普通步骤。
+      - name: Build distributions # 步骤显示名称：把项目整理为可安装的 Python 发行包。
+        run: uv build # 调用配置的 Hatchling 构建后端，在 dist/ 生成 wheel 和源码分发包；不部署服务。

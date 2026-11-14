@@ -1,37 +1,16 @@
-# 导入 json，供本模块后续逻辑使用。
 import json
-
-# 导入 logging，供本模块后续逻辑使用。
 import logging
-
-# 导入 Path，供本模块后续逻辑使用。
 from pathlib import Path
-
-# 导入 Annotated，供本模块后续逻辑使用。
 from typing import Annotated
 
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
-
-# 导入 typer，供本模块后续逻辑使用。
 import typer
 
-# 导入 build_dataset，供本模块后续逻辑使用。
 from telecom_churn.features import build_dataset
-
-# 导入 classification_metrics，供本模块后续逻辑使用。
 from telecom_churn.metrics import classification_metrics
-
-# 导入 load_model, train, write_json，供本模块后续逻辑使用。
 from telecom_churn.modeling import load_model, train, write_json
-
-# 导入 drift_report，供本模块后续逻辑使用。
 from telecom_churn.monitoring import drift_report
-
-# 导入 validate_features，供本模块后续逻辑使用。
 from telecom_churn.schema import validate_features
-
-# 导入 retention_list, score_customers，供本模块后续逻辑使用。
 from telecom_churn.scoring import retention_list, score_customers
 
 # 计算并保存 app；调用 typer.Typer 完成本步处理。
@@ -67,7 +46,6 @@ def save_csv(frame: pd.DataFrame, path: Path):
 # 命令行特征构建入口，同时保存数据来源及构建参数。
 @app.command("build-features")
 def build_features(
-    raw_dir: Path = Path("data/bundled"),
     output: Path = Path("data/features.csv"),
     start: str = "2025-01-01",
     end: str = "2025-12-01",
@@ -76,11 +54,11 @@ def build_features(
 ):
     """Build point-in-time customer features."""
     # 计算并保存 frame；调用 build_dataset 完成本步处理。
-    frame = build_dataset(raw_dir, start, end, data_end, labeled)
+    frame = build_dataset(Path("data/bundled"), start, end, data_end, labeled)
     # 把表格写入 CSV 文件。
     save_csv(frame, output)
     # 定位原始数据的来源元数据文件。
-    source = raw_dir / "metadata.json"
+    source = Path("data/bundled/metadata.json")
     # metadata：数据来源、模型参数或评估结果的元数据。
     metadata = (
         json.loads(source.read_text()) if source.exists() else {"source": "external_raw_tables"}
@@ -255,7 +233,6 @@ def demo(seed: int = 42, algorithm: str = "lightgbm"):
 @app.command("serve")
 def serve(host: str = "127.0.0.1", port: int = 8000):
     """Start the scoring API and operations console."""
-    # 导入 uvicorn，供本模块后续逻辑使用。
     import uvicorn
 
     # 调用 logging.basicConfig 完成本步处理。

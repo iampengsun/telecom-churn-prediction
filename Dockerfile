@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
 RUN pip install --no-cache-dir uv==0.9.18
 COPY pyproject.toml uv.lock .python-version README.md ./
 COPY src ./src
-RUN uv sync --frozen --no-dev --extra lightgbm \
+RUN uv sync --frozen --no-dev \
     && rm -rf /tmp/uv-cache \
     && useradd --uid 10001 --create-home churn \
     && mkdir -p /app/artifacts /app/data /app/reports \

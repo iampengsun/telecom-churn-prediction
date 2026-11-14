@@ -1,11 +1,19 @@
 import json
+import shutil
 
 import pandas as pd
+import pytest
 from typer.testing import CliRunner
 
 from telecom_churn.cli import app
 
 runner = CliRunner()
+
+
+@pytest.fixture(autouse=True)
+def cli_data(raw_dir, tmp_path, monkeypatch):
+    shutil.copytree(raw_dir, tmp_path / "data" / "bundled")
+    monkeypatch.chdir(tmp_path)
 
 
 def invoke(*args):
@@ -14,13 +22,11 @@ def invoke(*args):
     return result
 
 
-def test_cli_pipeline(raw_dir, tmp_path):
+def test_cli_pipeline(tmp_path):
     feature_file = tmp_path / "features.csv"
     artifacts = tmp_path / "artifacts"
     invoke(
         "build-features",
-        "--raw-dir",
-        str(raw_dir),
         "--output",
         str(feature_file),
         "--data-end",
@@ -32,12 +38,12 @@ def test_cli_pipeline(raw_dir, tmp_path):
         str(feature_file),
         "--artifacts",
         str(artifacts),
-        "--algorithm",
-        "logistic",
     )
     version = json.loads((artifacts / "latest.json").read_text())["model_version"]
     metadata = json.loads((artifacts / version / "metadata.json").read_text())
     assert metadata["data_source"]["source"] == "generated_fixture"
+    assert set(metadata["validation_comparison"]) == {"logistic", "lightgbm"}
+    assert "lightgbm" in metadata["dependencies"]
     latest = pd.read_csv(feature_file)
     latest = latest[latest["snapshot_date"] == latest["snapshot_date"].max()]
     latest.to_csv(feature_file, index=False)
@@ -82,10 +88,10 @@ def test_cli_pipeline(raw_dir, tmp_path):
     assert selected["risk_level"].eq("high").all()
 
 
-def test_cli_requires_mature_labels(raw_dir, tmp_path):
+def test_cli_requires_mature_labels(tmp_path):
     result = runner.invoke(
         app,
-        ["build-features", "--raw-dir", str(raw_dir), "--output", str(tmp_path / "features.csv")],
+        ["build-features", "--output", str(tmp_path / "features.csv")],
     )
     assert result.exit_code != 0
     assert "data_end" in str(result.exception)

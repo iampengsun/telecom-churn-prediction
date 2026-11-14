@@ -6,17 +6,23 @@
       "type": "debugpy",
       "request": "launch",
       "module": "telecom_churn.cli",
-      "args": ["serve"],
+      "args": [
+        "serve"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "justMyCode": true
     },
     {
-      "name": "固定小样本：构建特征",
+      "name": "固定小样本：命令行测试",
       "type": "debugpy",
       "request": "launch",
-      "module": "telecom_churn.cli",
-      "args": ["build-features", "--raw-dir", "tests/data", "--data-end", "2026-02-01", "--output", "data/practice/features.csv"],
+      "module": "pytest",
+      "args": [
+        "tests/test_cli.py",
+        "-v",
+        "-s"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "justMyCode": true

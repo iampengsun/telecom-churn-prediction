@@ -5,21 +5,21 @@ export UV_CACHE_DIR
 help:
 	@echo "Targets: install features train demo serve test lint format build"
 features:
-	uv run --frozen --extra lightgbm churn build-features --data-end 2026-02-01
+	uv run --frozen churn build-features --data-end 2026-02-01
 format:
-	uv run --frozen --extra lightgbm ruff format src tests
+	uv run --frozen ruff format src tests
 install:
-	uv sync --frozen --extra lightgbm
+	uv sync --frozen
 demo:
-	uv run --frozen --extra lightgbm churn demo
+	uv run --frozen churn demo
 train:
-	uv run --frozen --extra lightgbm churn train
+	uv run --frozen churn train
 serve:
-	uv run --frozen --extra lightgbm churn serve
+	uv run --frozen churn serve
 test:
-	uv run --frozen --extra lightgbm pytest --cov=telecom_churn --cov-report=term-missing
+	uv run --frozen pytest --cov=telecom_churn --cov-report=term-missing
 lint:
-	uv run --frozen --extra lightgbm ruff check src tests
-	uv run --frozen --extra lightgbm ruff format --check src tests
+	uv run --frozen ruff check src tests
+	uv run --frozen ruff format --check src tests
 build:
 	uv build

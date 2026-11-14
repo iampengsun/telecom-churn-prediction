@@ -1,16 +1,8 @@
-# 导入 date，供本模块后续逻辑使用。
 from datetime import date
-
-# 导入 Literal，供本模块后续逻辑使用。
 from typing import Literal
 
-# 导入 np，供本模块后续逻辑使用。
 import numpy as np
-
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
-
-# 导入 BaseModel, ConfigDict, Field, model_validator，供本模块后续逻辑使用。
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # SCHEMA_VERSION：特征契约版本，加载旧模型时用于一致性检查。

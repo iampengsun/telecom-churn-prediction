@@ -1,6 +1,6 @@
 {
-  "source": "generated_fixture",
-  "description": "固定的规则合成教学数据；不代表运营商真实客户或实际业务效果。",
+  "source": "bundled_tables",
+  "description": "数据",
   "seed": 42,
   "customers": 200000,
   "data_start": "2024-10-01",

@@ -805,17 +805,13 @@ dependencies = [
     { name = "anyio" },
     { name = "fastapi" },
     { name = "joblib" },
+    { name = "lightgbm" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pydantic" },
     { name = "scikit-learn" },
     { name = "typer" },
     { name = "uvicorn" },
-]
-
-[package.optional-dependencies]
-lightgbm = [
-    { name = "lightgbm" },
 ]
 
 [package.dev-dependencies]
@@ -831,7 +827,7 @@ requires-dist = [
     { name = "anyio", specifier = ">=4.8,<4.12" },
     { name = "fastapi", specifier = ">=0.115,<0.130" },
     { name = "joblib", specifier = ">=1.4,<2" },
-    { name = "lightgbm", marker = "extra == 'lightgbm'", specifier = ">=4.5,<5" },
+    { name = "lightgbm", specifier = ">=4.5,<5" },
     { name = "numpy", specifier = ">=2.1,<2.4" },
     { name = "pandas", specifier = ">=2.2,<3" },
     { name = "pydantic", specifier = ">=2.10,<3" },
@@ -839,7 +835,6 @@ requires-dist = [
     { name = "typer", specifier = ">=0.15,<1" },
     { name = "uvicorn", specifier = ">=0.34,<1" },
 ]
-provides-extras = ["lightgbm"]
 
 [package.metadata.requires-dev]
 dev = [

@@ -96,11 +96,6 @@ def test_constant_feature_drift(latest):
 
 @pytest.mark.parametrize("algorithm", ["hist_gradient_boosting", "lightgbm"])
 def test_alternative_algorithms(features, algorithm):
-    if algorithm == "lightgbm":
-        try:
-            import lightgbm  # noqa: F401
-        except ImportError, OSError:
-            pytest.skip("Optional LightGBM runtime not installed")
     model = make_pipeline(algorithm, 42)
     part = features.head(400)
     model.fit(part[FEATURES], part["churn"])

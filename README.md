@@ -1,129 +1,80 @@
-# Telecom Customer Churn Prediction
+# 电信客户流失预测：从数据到服务
 
-电信客户流失预警与挽留决策支持系统。
+这个项目用来练习如何搭建一个完整的机器学习应用：读取客户业务表，计算历史特征，训练未来 30 天流失预测模型，再把结果做成评分文件、回访名单和 HTTP 接口。
 
-系统以客户历史通信、账单、合约和服务工单为输入，预测未来 30 天主动销户或携号转出风险，提供客户风险分层、批量评分、挽留名单、模型评估和数据漂移监控。
+文档中的环境准备和终端命令以 macOS / Linux 为基础，使用 Python 3.14。
 
-## 功能
+文档按从零搭建的顺序编排：创建项目目录，准备固定原始数据，再逐步编写代码和测试。`churn` 命令、训练模型和网页服务会在后面的步骤中完成。
 
-- 五类业务表接入、主键和数值校验、客户级时间窗口聚合。
-- 30 / 90 天行为特征、合约特征、账单逾期特征。
-- 按时间划分训练、验证与测试集，清除跨分区标签窗口。
-- Logistic Regression 基线与 LightGBM 对比，支持 HistGradientBoosting。
-- 验证集选择模型及风险分层阈值，测试集独立评估。
-- ROC-AUC、Average Precision、Brier Score、Top-K Precision / Recall / Lift。
-- 模型版本、数据指纹、依赖版本、校验和及原子版本指针。
-- 批量评分、FastAPI 接口、客户风险工作台。
-- 联系授权、触达冷却期和容量约束下的挽留名单。
-- 数值特征 PSI、类别分布变化和未知类别比例监控。
+## 从哪里开始
 
-## 工程结构
-
-```text
-src/telecom_churn/
-├── schema.py          输入契约与特征版本
-├── features.py        业务表读取与时间窗口计算
-├── modeling.py        时间验证、训练、模型持久化
-├── metrics.py         模型与名单排序指标
-├── scoring.py         客户评分、风险信号、名单筛选
-├── monitoring.py      训练参考分布与漂移检测
-├── cli.py             特征、训练、评分和监控命令
-├── api.py             预测服务与访问控制
-└── static/            客户风险工作台
- tests/                数据口径、模型、接口、名单与命令行测试
- docs/                 VS Code 实操教程、数据契约、架构和部署说明
- data/bundled/         20 个客户分片的压缩业务表及校验清单
-```
-
-## 环境
-
-Python 3.14，由 `.python-version` 指定；依赖由 `uv.lock` 锁定。
-
-```bash
-uv sync --frozen --extra lightgbm
-```
-
-
-## 全流程
-
-```bash
-churn demo --seed 42
-churn serve
-```
-
-命令使用项目虚拟环境；也可通过 `uv run --frozen --extra lightgbm churn ...` 执行。工作台地址为 `http://127.0.0.1:8000`，OpenAPI 页面为 `/docs`。
-
-项目附带 200,000 名客户、约 7,959 万条使用明细的固定数据 `data/bundled/`，无需生成数据。`demo` 从这些表构建特征、训练模型，并输出 `data/latest.csv`、`data/request.json`、版本化模型、批量评分、漂移报告与挽留名单。最新评分日为 2026-01-01。演练的联系资格默认允许触达，实际业务必须换成真实授权记录。
-
-从环境搭建到逐文件编写、运行与验收，请按 [VS Code 实操教程](docs/tutorial.md) 操作。数据规模与来源见 [数据说明](data/bundled/README.md)。
-
-## 业务数据流水线
-
-```bash
-churn build-features \
-  --raw-dir data/bundled \
-  --start 2025-01-01 --end 2025-12-01 \
-  --data-end 2026-02-01 \
-  --output data/features.csv
-
-churn train \
-  --features data/features.csv \
-  --validation-start 2025-08-01 \
-  --test-start 2025-10-01 \
-  --algorithm lightgbm \
-  --artifacts artifacts
-
-churn build-features \
-  --raw-dir data/bundled \
-  --start 2026-01-01 --end 2026-01-01 \
-  --no-labeled --output data/current.csv
-
-churn score --features data/current.csv --output reports/scores.csv
-churn monitor --features data/current.csv --output reports/drift.json
-
-churn retention-list \
-  --scores reports/scores.csv \
-  --eligibility data/eligibility.csv \
-  --capacity 100 --cooldown-days 14 \
-  --output reports/retention.csv
-```
-
-`--data-end` 为数据完整性水位的右开边界。只有完整观察到评分日之后 30 天的样本才可构建标签。特征构建按月初生成样本；线上任意日期可调用 `features.snapshot`。
-
-## 接口
-
-| 方法 | 路径 | 用途 |
+| 顺序 | 文档 | 读完后做什么 |
 |---|---|---|
-| GET | `/health` | 进程存活检查 |
-| GET | `/ready` | 模型可用性检查 |
-| GET | `/api/v1/model` | 模型版本与评估结果 |
-| POST | `/api/v1/predict` | 1–1,000 条客户特征评分 |
+| 1 | [开发工具入门](docs/tooling.md) | 用独立小例子学会 uv、测试、Ruff、命令行、Make、Git 和 CI |
+| 2 | [数据说明](docs/data-contract.md) | 看懂原始表、字段含义和特征数据 |
+| 3 | [从空目录搭建项目](docs/tutorial.md) | 创建配置、逐个编写模块与测试，再接上命令行和网页 |
+
+如果已经熟悉 Python 项目工具，可以直接进入实操教程。每阶段先跑小样本，确认结果后再处理全量数据。
+
+## 要做出什么
+
+训练时使用已经发生的历史记录和未来结果，学习哪些行为与流失有关；评分时只输入当时已知的特征，输出风险分数。客户编号用于关联记录，不用于预测。
+
+| 部分 | 要实现的内容 |
+|---|---|
+| 数据处理 | 读取客户、使用、账单、投诉和终止事件五张表，检查字段与日期 |
+| 特征与标签 | 汇总评分日前 30 / 90 天的记录，标记未来 30 天是否主动流失 |
+| 模型训练 | 按时间划分训练、验证、测试集，在验证集选模型与阈值 |
+| 结果保存 | 保存模型、评估结果、数据来源和版本，供后续评分复用 |
+| 客户评分 | 复用训练时的处理步骤，输出风险分数、等级和业务信号 |
+| 回访名单 | 结合客户授权、联系间隔和人数上限筛选名单 |
+| 接口和页面 | 通过 FastAPI 提供预测接口，用网页查看结果 |
+| 工程检查 | 使用测试、静态检查、打包和 GitHub CI 检查修改 |
+
+风险评分帮助安排回访顺序，不直接证明客户一定会流失。名单导出也不会自动发送短信或拨打电话。
+
+## 数据材料
+
+原始数据位于 `data/bundled/`：200,000 名客户、约 7,959 万条使用明细，按客户分成 20 片。开发与测试先使用 `tests/data/` 中的 160 客户固定样本。各表字段、分片规则和生成文件的区别见[数据说明](docs/data-contract.md)，规模见[数据说明](data/bundled/README.md)。
+
+数据范围、行数和文件清单见配套 `metadata.json`。
+
+## 开发顺序
+
+先独立安装 uv，由它安装 Python 3.14；再创建项目与依赖配置，生成环境和锁文件，依次编写这些模块：
+
+| 模块 | 负责什么 | 放在这个位置的原因 |
+|---|---|---|
+| `schema.py` | 字段、类型与输入校验 | 后面的模块使用同一套数据规则 |
+| `features.py` | 历史窗口聚合与标签 | 给训练和评分准备输入 |
+| `metrics.py` | 评估指标 | 给模型比较提供统一计算方法 |
+| `monitoring.py` | 参考分布与漂移检查 | 训练时就要保存参考信息 |
+| `modeling.py` | 时间切分、训练与保存 | 前面的数据与评估函数已可用 |
+| `scoring.py` | 评分、风险信号与名单筛选 | 使用已训练模型，并接入联系资格 |
+| `cli.py` | 终端命令 | 把已经验证的函数串起来 |
+| `api.py`、`static/` | HTTP 接口与网页 | 复用评分函数，再增加交互入口 |
+
+每写完一部分就添加测试。到命令行模块完成后，才在项目配置中注册 `churn`；全部本地检查通过后，再创建 Makefile、GitHub 工作流和容器配置。
+
+## 完成后怎样运行
+
+以下命令用于已经完成教程、已有源码和锁文件的目录，不是空目录的初始化步骤：
 
 ```bash
-curl http://127.0.0.1:8000/api/v1/predict \
-  -H 'Content-Type: application/json' \
-  -H "X-API-Key: ${CHURN_API_KEY}" \
-  --data-binary @data/request.json
-```
-
-API 和批量评分共用校验与模型管道。额外字段、重复客户快照、非法数值、错误窗口关系返回 422；模型未加载返回 503。
-
-## 工程检查
-
-```bash
+uv sync --frozen
+uv run --frozen churn --help
 make lint
 make test
 make build
 ```
 
-GitHub Actions 在 Python 3.14 上执行静态检查、测试和构建。工作流定义在 `.github/workflows/ci.yml`。
+完成 `demo` 命令后，可以用它串联全量特征、训练、评分、监控和名单输出：
 
-## 相关文档
+```bash
+uv run --frozen churn demo
+uv run --frozen churn serve
+```
 
-- [开发工具入门：uv、churn、pytest、Ruff、Make 与 CI](docs/tooling.md)
-- [VS Code 实操教程](docs/tutorial.md)
-- [数据契约](docs/data-contract.md)
-- [模型与系统设计](docs/architecture.md)
-- [部署与运维](docs/operations.md)
+`demo` 会生成或覆盖同名的派生文件，并新增模型版本。网页地址为 `http://127.0.0.1:8000`，接口文档为 `/docs`。如果只想练习一个阶段，按教程分别执行，不必每次重跑全流程。
 
-技术参考：[scikit-learn 数据泄漏与 Pipeline](https://scikit-learn.org/stable/common_pitfalls.html)、[LightGBM 安装说明](https://lightgbm.readthedocs.io/en/stable/Installation-Guide.html)、[FastAPI Lifespan](https://fastapi.tiangolo.com/advanced/events/)。
+技术参考：[scikit-learn 数据泄漏与 Pipeline](https://scikit-learn.org/stable/common_pitfalls.html)、[FastAPI 生命周期](https://fastapi.tiangolo.com/advanced/events/)。

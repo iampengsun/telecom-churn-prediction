@@ -1,10 +1,6 @@
-# 导入 math，供本模块后续逻辑使用。
 import math
 
-# 导入 np，供本模块后续逻辑使用。
 import numpy as np
-
-# 导入 average_precision_score, brier_score_loss, confusion_matrix, precision_score, recall_score, roc_auc_score，供本模块后续逻辑使用。
 from sklearn.metrics import (
     average_precision_score,
     brier_score_loss,

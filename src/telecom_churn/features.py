@@ -1,13 +1,8 @@
-# 导入 Path，供本模块后续逻辑使用。
 from pathlib import Path
 
-# 导入 np，供本模块后续逻辑使用。
 import numpy as np
-
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
 
-# 导入 CHURN_TYPES, HORIZON_DAYS, validate_features，供本模块后续逻辑使用。
 from telecom_churn.schema import CHURN_TYPES, HORIZON_DAYS, validate_features
 
 # TABLE_COLUMNS：五张输入业务表分别需要的字段。

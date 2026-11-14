@@ -1,61 +1,25 @@
-# 导入 hashlib，供本模块后续逻辑使用。
 import hashlib
-
-# 导入 importlib.metadata，供本模块后续逻辑使用。
 import importlib.metadata
-
-# 导入 json，供本模块后续逻辑使用。
 import json
-
-# 导入 os，供本模块后续逻辑使用。
 import os
-
-# 导入 platform，供本模块后续逻辑使用。
 import platform
-
-# 导入 UTC, datetime，供本模块后续逻辑使用。
 from datetime import UTC, datetime
-
-# 导入 Path，供本模块后续逻辑使用。
 from pathlib import Path
-
-# 导入 uuid4，供本模块后续逻辑使用。
 from uuid import uuid4
 
-# 导入 joblib，供本模块后续逻辑使用。
 import joblib
-
-# 导入 np，供本模块后续逻辑使用。
 import numpy as np
-
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
-
-# 导入 ColumnTransformer，供本模块后续逻辑使用。
+from lightgbm import LGBMClassifier
 from sklearn.compose import ColumnTransformer
-
-# 导入 HistGradientBoostingClassifier，供本模块后续逻辑使用。
 from sklearn.ensemble import HistGradientBoostingClassifier
-
-# 导入 permutation_importance，供本模块后续逻辑使用。
 from sklearn.inspection import permutation_importance
-
-# 导入 LogisticRegression，供本模块后续逻辑使用。
 from sklearn.linear_model import LogisticRegression
-
-# 导入 Pipeline，供本模块后续逻辑使用。
 from sklearn.pipeline import Pipeline
-
-# 导入 OneHotEncoder, StandardScaler，供本模块后续逻辑使用。
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-# 导入 classification_metrics，供本模块后续逻辑使用。
 from telecom_churn.metrics import classification_metrics
-
-# 导入 make_reference，供本模块后续逻辑使用。
 from telecom_churn.monitoring import make_reference
-
-# 导入 CATEGORICAL_FEATURES, FEATURES, NUMERIC_FEATURES, SCHEMA_VERSION, validate_features，供本模块后续逻辑使用。
 from telecom_churn.schema import (
     CATEGORICAL_FEATURES,
     FEATURES,
@@ -130,13 +94,6 @@ def make_pipeline(algorithm: str, seed: int) -> Pipeline:
         )
     # 检查 algorithm == 'lightgbm'；满足条件才执行下面的分支。
     elif algorithm == "lightgbm":
-        # 执行可能失败的操作，并在下方捕获预期异常。
-        try:
-            # 导入 LGBMClassifier，供本模块后续逻辑使用。
-            from lightgbm import LGBMClassifier
-        except (ImportError, OSError) as exc:
-            # 发现不符合契约或无法继续的情况，抛出带具体原因的异常。
-            raise ValueError("LightGBM runtime unavailable; install the lightgbm extra") from exc
         # estimator：当前选择的分类器及其超参数。
         estimator = LGBMClassifier(
             n_estimators=180,

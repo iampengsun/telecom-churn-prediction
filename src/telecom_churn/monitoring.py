@@ -1,10 +1,6 @@
-# 导入 np，供本模块后续逻辑使用。
 import numpy as np
-
-# 导入 pd，供本模块后续逻辑使用。
 import pandas as pd
 
-# 导入 CATEGORICAL_FEATURES, NUMERIC_FEATURES，供本模块后续逻辑使用。
 from telecom_churn.schema import CATEGORICAL_FEATURES, NUMERIC_FEATURES
 
 
